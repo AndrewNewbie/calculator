@@ -35,6 +35,9 @@ public class Main {
              res=num1/num2;
                 System.out.println("Результат: " + res);
             }break;
-     }
+        default:
+            System.out.println("Error:");
     }
+    }
+
 }
