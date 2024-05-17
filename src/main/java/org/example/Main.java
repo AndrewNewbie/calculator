@@ -3,93 +3,98 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
+  static Scanner scanner = new Scanner(System.in);
+
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    double res;
-    for (int i = 0; ; ) {
+    boolean isWhileActive = true;
+    while (isWhileActive) {
       System.out.println("Дія(є такі варіанти:+,-,*,/,^):");
       String action = scanner.nextLine();
 
       switch (action) {
         case "+":
-          System.out.println("Введіть перший доданок: ");
-          double num1 = scanner.nextFloat();
-
-          System.out.println("Введіть другий: ");
-          double num2 = scanner.nextFloat();
-          plus(num1, num2);
+          plus();
           break;
         case "-":
-          System.out.println("Введіть зменшуване число: ");
-          num1 = scanner.nextFloat();
-
-          System.out.println("Введіть відє`мник: ");
-          num2 = scanner.nextFloat();
-          subtraction(num1, num2);
+          subtraction();
           break;
         case "*":
-          System.out.println("Введіть перший добуток: ");
-          num1 = scanner.nextFloat();
-
-          System.out.println("Введіть другий: ");
-          num2 = scanner.nextFloat();
-          multiplication(num1, num2);
+          multiplication();
           break;
         case "/":
-          System.out.println("Введіть ділене число: ");
-          num1 = scanner.nextFloat();
-
-          System.out.println("Введіть дільник: ");
-          num2 = scanner.nextFloat();
-          division(num1, num2);
+          division();
           break;
         case "^":
-          System.out.println("Введіть число яке будемо підносити до квадрату: ");
-          num1 = scanner.nextFloat();
-          square(num1);
+          square();
           break;
         default:
           System.out.println("Error:");
       }
       System.out.println("Хочете продовжити?Введить \"yes\" або \"no\"");
+      scanner.nextLine();
       String yes_no = scanner.nextLine();
-      if (yes_no.contains("no")) {
-        break;
+      if (yes_no.equals("no")) {
+        isWhileActive = false;
+        System.exit(0);
       }
     }
   }
 
-  public static void plus(double a, double b) {
-    double res;
+  public static void plus() {
+    System.out.println("Введіть перший доданок: ");
+    double num1 = scanner.nextFloat();
+    System.out.println("Введіть другий: ");
+    double num2 = scanner.nextFloat();
 
-    res = a + b;
+    double res;
+    res = num1 + num2;
     System.out.println("Результат: " + res);
   }
 
-  public static void subtraction(double a, double b) {
+  public static void subtraction() {
+    System.out.println("Введіть зменшуване число: ");
+    double num1 = scanner.nextFloat();
+    System.out.println("Введіть відє`мник: ");
+    double num2 = scanner.nextFloat();
+
     double res;
-    res = a - b;
+    res = num1 - num2;
     System.out.println("Результат: " + res);
   }
 
-  public static void multiplication(double a, double b) {
+  public static void multiplication() {
+    System.out.println("Введіть перший добуток: ");
+    double num1 = scanner.nextFloat();
+    System.out.println("Введіть другий: ");
+    double num2 = scanner.nextFloat();
+
     double res;
-    res = a * b;
+    res = num1 * num2;
     System.out.println("Результат: " + res);
   }
 
-  public static void division(double a, double b) {
+  public static void division() {
+    System.out.println("Введіть ділене число: ");
+    double num1 = scanner.nextFloat();
+
+    System.out.println("Введіть дільник: ");
+    double num2 = scanner.nextFloat();
+
     double res;
-    if (b == 0) System.out.println("Error:");
+    if (num2 == 0) System.out.println("Error:");
     else {
-      res = a / b;
+      res = num1 / num2;
       System.out.println("Результат: " + res);
     }
   }
 
-  public static void square(double a) {
+  public static void square() {
     int res;
-    res = (int) (a * a);
+    System.out.println("Введіть число яке будемо підносити до квадрату: ");
+    double num1 = scanner.nextFloat();
+
+    res = (int) (num1 * num1);
     System.out.println("Квадрат: " + res);
   }
 }
