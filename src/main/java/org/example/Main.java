@@ -5,43 +5,85 @@ import java.util.Scanner;
 public class Main {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Введіть перше число: ");
-    double num1 = scanner.nextFloat();
-
-    System.out.println("Введіть друге число : ");
-    double num2 = scanner.nextFloat();
-
     double res;
-    System.out.println("Дія:");
-    String action = scanner.nextLine();
-    action = scanner.nextLine();
-    switch (action) {
-      case "+":
-        res = num1 + num2;
-        System.out.println("Результат: " + res);
+    for (int i = 0; ; ) {
+      System.out.println("Дія(є такі варіанти:+,-,*,/,^):");
+      String action = scanner.nextLine();
+
+      switch (action) {
+        case "+":
+          System.out.println("Введіть перший доданок: ");
+          double num1 = scanner.nextFloat();
+
+          System.out.println("Введіть другий: ");
+          double num2 = scanner.nextFloat();
+          plus(num1, num2);
+          break;
+        case "-":
+          System.out.println("Введіть зменшуване число: ");
+          num1 = scanner.nextFloat();
+
+          System.out.println("Введіть відє`мник: ");
+          num2 = scanner.nextFloat();
+          subtraction(num1, num2);
+          break;
+        case "*":
+          System.out.println("Введіть перший добуток: ");
+          num1 = scanner.nextFloat();
+
+          System.out.println("Введіть другий: ");
+          num2 = scanner.nextFloat();
+          multiplication(num1, num2);
+          break;
+        case "/":
+          System.out.println("Введіть ділене число: ");
+          num1 = scanner.nextFloat();
+
+          System.out.println("Введіть дільник: ");
+          num2 = scanner.nextFloat();
+          division(num1, num2);
+          break;
+        case "^":
+          System.out.println("Введіть число яке будемо підносити до квадрату: ");
+          num1 = scanner.nextFloat();
+          square(num1);
+          break;
+        default:
+          System.out.println("Error:");
+      }
+      System.out.println("Хочете продовжити?Введить \"yes\" або \"no\"");
+      String yes_no = scanner.nextLine();
+      if (yes_no.contains("no")) {
         break;
-      case "-":
-        res = num1 - num2;
-        System.out.println("Результат: " + res);
-        break;
-      case "*":
-        res = num1 * num2;
-        System.out.println("Результат: " + res);
-        break;
-      case "^":
-        System.out.println("Якого числа \"1\" чи \"2\"?: ");
-        int a = scanner.nextInt();
-        if (a == 1) square(num1);
-        if (a == 2) square(num2);
-        else System.out.println("Error: ");
-        break;
-      case "/":
-        if (num2 == 0) System.out.println("Error:");
-        else {
-          res = num1 / num2;
-          System.out.println("Результат: " + res);
-        }
-        break;
+      }
+    }
+  }
+
+  public static void plus(double a, double b) {
+    double res;
+
+    res = a + b;
+    System.out.println("Результат: " + res);
+  }
+
+  public static void subtraction(double a, double b) {
+    double res;
+    res = a - b;
+    System.out.println("Результат: " + res);
+  }
+
+  public static void multiplication(double a, double b) {
+    double res;
+    res = a * b;
+    System.out.println("Результат: " + res);
+  }
+
+  public static void division(double a, double b) {
+    double res;
+    if (b == 0) System.out.println("Error:");
+    else {
+      res = a / b;
+      System.out.println("Результат: " + res);
     }
   }
 
